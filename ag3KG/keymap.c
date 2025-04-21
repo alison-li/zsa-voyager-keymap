@@ -94,19 +94,15 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
       return false;
   }
   switch (detected_os) {
-      case OS_MACOS:
-      case OS_IOS:
-        layer_move(0);
-        break;
-      case OS_WINDOWS:
-        layer_move(1);
-        break;
-      case OS_LINUX:
-        layer_move(0);
-        break;
-      case OS_UNSURE:
-        layer_move(0);
-        break;
+    case OS_MACOS:
+    case OS_IOS:
+    case OS_UNSURE:
+      layer_move(0);
+      break;
+    case OS_WINDOWS:
+    case OS_LINUX:
+      layer_move(1);
+      break;
   }
   return true;
 }
