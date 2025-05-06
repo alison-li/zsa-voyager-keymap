@@ -90,6 +90,24 @@ void set_layer_color(int layer) {
   }
 }
 
+bool process_detected_host_os_kb(os_variant_t detected_os) {
+  if (!process_detected_host_os_user(detected_os)) {
+      return false;
+  }
+  switch (detected_os) {
+    case OS_MACOS:
+    case OS_IOS:
+    case OS_UNSURE:
+      layer_move(0);
+      break;
+    case OS_WINDOWS:
+    case OS_LINUX:
+      layer_move(1);
+      break;
+  }
+  return true;
+}
+
 bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
